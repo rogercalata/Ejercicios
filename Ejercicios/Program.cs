@@ -30,7 +30,7 @@ namespace Ejercicios
                 Console.ReadKey();
             }
         }
-
+        
         /// <summary>
 
         /// SubSystem que escribe nombre
@@ -102,6 +102,30 @@ namespace Ejercicios
             public void MethodFive()
             {
                 Console.WriteLine("DNI");
+            }
+        }
+        class Alumno
+
+        {
+            private string _nombre;
+            private string _apellido;
+            private string _correo;
+
+            // Constructor
+
+            public Alumno(string nombre, string apellido, string correo)
+            {
+                this._nombre = nombre;
+                this._apellido = apellido;
+                this._correo = correo;
+
+            }
+
+            // Gets the name
+
+            public string Nombre
+            {
+                get { return _nombre; }
             }
         }
         /// <summary>
