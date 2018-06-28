@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -9,9 +10,7 @@ namespace Ejercicios
     class Program
     {
         class MainApp
-
         {
-
             /// <summary>
             /// Esta App muestra los datos de dos formas segun el metodo, de forma reducida o completa.
             /// he utilizado una estructura de patrón facade con subsytems
@@ -19,7 +18,7 @@ namespace Ejercicios
             public static void Main()
             {
                 Facade facade = new Facade();
-
+                
                 facade.MethodA();
                 Console.ReadKey();
                 Console.Clear();
@@ -30,19 +29,21 @@ namespace Ejercicios
                 Console.ReadKey();
             }
         }
-        
+
         /// <summary>
 
         /// SubSystem que escribe nombre
 
         /// </summary>
-
-        class SubSystemOne
+        
+        public class SubSystemOne 
 
         {
+            Alumno nombre = new Alumno("Roger", "Calatayud", "34353424x", "rogercalata@gmail.com", "9334546373");
             public void MethodOne()
             {
-                Console.WriteLine("Nombre");
+                Console.WriteLine(nombre.Nombre);
+                
             }
         }
 
@@ -55,9 +56,11 @@ namespace Ejercicios
         class SubSystemTwo
 
         {
+            Alumno apellido = new Alumno("Roger", "Calatayud", "34353424x", "rogercalata@gmail.com","9334546373");
+
             public void MethodTwo()
             {
-                Console.WriteLine("Apellido");
+                Console.WriteLine(apellido.Apellidos);
             }
         }
 
@@ -104,30 +107,7 @@ namespace Ejercicios
                 Console.WriteLine("DNI");
             }
         }
-        class Alumno
-
-        {
-            private string _nombre;
-            private string _apellido;
-            private string _correo;
-
-            // Constructor
-
-            public Alumno(string nombre, string apellido, string correo)
-            {
-                this._nombre = nombre;
-                this._apellido = apellido;
-                this._correo = correo;
-
-            }
-
-            // Gets the name
-
-            public string Nombre
-            {
-                get { return _nombre; }
-            }
-        }
+        
         /// <summary>
 
         /// The 'Facade' class
