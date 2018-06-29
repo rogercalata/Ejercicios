@@ -19,10 +19,13 @@ namespace Ejercicios
             {
                 Facade facade = new Facade();
                 
-                facade.MethodA();
+                facade.MethodNombre();
                 Console.ReadKey();
                 Console.Clear();
-                facade.MethodB();
+                facade.MethodDatos();
+                Console.ReadKey();
+                Console.Clear();
+                facade.MethodTodo();
 
                 // Wait for user
 
@@ -36,31 +39,34 @@ namespace Ejercicios
 
         /// </summary>
         
-        public class SubSystemOne 
+        public class SubSystemNombre
 
         {
             Alumno nombre = new Alumno("Roger", "Calatayud", "34353424x", "rogercalata@gmail.com", "9334546373");
-            public void MethodOne()
+            public void MethodNombre()
             {
                 Console.WriteLine(nombre.Nombre);
+                Console.WriteLine(nombre.Apellidos);
                 
             }
         }
 
         /// <summary>
 
-        /// SubSystem que escribe Apellido
+        /// SubSystem que escribe datos personales
 
         /// </summary>
 
-        class SubSystemTwo
+        class SubSystemDatos
 
         {
-            Alumno apellido = new Alumno("Roger", "Calatayud", "34353424x", "rogercalata@gmail.com","9334546373");
+            Alumno datos = new Alumno("Roger", "Calatayud", "34353424x", "rogercalata@gmail.com","9334546373");
 
-            public void MethodTwo()
+            public void MethodDatos()
             {
-                Console.WriteLine(apellido.Apellidos);
+                Console.WriteLine(datos.correo);
+                Console.WriteLine(datos.Dni);
+                Console.WriteLine(datos.telefono);
             }
         }
 
@@ -70,41 +76,17 @@ namespace Ejercicios
 
         /// </summary>
 
-        class SubSystemThree
+        class SubSystemTodo
 
         {
-            public void MethodThree()
+            Alumno datos = new Alumno("Roger", "Calatayud", "34353424x", "rogercalata@gmail.com", "9334546373");
+            public void MethodTodo()
             {
-                Console.WriteLine("Correo");
-            }
-        }
-
-        /// <summary>
-
-        /// SubSystem que escribe Telefono
-
-        /// </summary>
-
-        class SubSystemFour
-
-        {
-            public void MethodFour()
-            {
-                Console.WriteLine("Telefono");
-            }
-        }
-        /// <summary>
-
-        /// The 'Subsystem ClassE' class
-
-        /// </summary>
-
-        class SubSystemFive
-
-        {
-            public void MethodFive()
-            {
-                Console.WriteLine("DNI");
+                Console.WriteLine(datos.Nombre);
+                Console.WriteLine(datos.Apellidos);
+                Console.WriteLine(datos.correo);
+                Console.WriteLine(datos.Dni);
+                Console.WriteLine(datos.telefono);
             }
         }
         
@@ -117,37 +99,34 @@ namespace Ejercicios
         class Facade
 
         {
-            private SubSystemOne _one;
-            private SubSystemTwo _two;
-            private SubSystemThree _three;
-            private SubSystemFour _four;
-            private SubSystemFive _five;
+            private SubSystemNombre _nombre;
+            private SubSystemDatos _datos;
+            private SubSystemTodo _todo;
+
 
             public Facade()
             {
-                _one = new SubSystemOne();
-                _two = new SubSystemTwo();
-                _three = new SubSystemThree();
-                _four = new SubSystemFour();
-                _five = new SubSystemFive();
+                _nombre = new SubSystemNombre();
+                _datos = new SubSystemDatos();
+                _todo = new SubSystemTodo();
+
             }
 
-            public void MethodA()
+            public void MethodNombre()
             {
-                Console.WriteLine("Datos reducidos");
-                _one.MethodOne();
-                _two.MethodTwo();
-                _four.MethodFour();
+                Console.WriteLine("Nombre y apellido");
+                _nombre.MethodNombre();
             }
 
-            public void MethodB()
+            public void MethodDatos()
             {
-                Console.WriteLine("Datos completos");
-                _one.MethodOne();
-                _two.MethodTwo();
-                _three.MethodThree();
-                _four.MethodFour();
-                _five.MethodFive();
+                Console.WriteLine("Datos adicionales");
+                _datos.MethodDatos();
+            }
+            public void MethodTodo()
+            {
+                Console.WriteLine("Todos los Datos");
+                _todo.MethodTodo();
             }
         }
     }

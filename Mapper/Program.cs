@@ -14,12 +14,14 @@ namespace Mapper
             public int id { get; set; }
             public string Nombre { get; set; }
             public string Apellidos { get; set; }
+            public int edad { get; set; }
         }
         public class forma2
         {
             public int id { get; set; }
             public string Nombre { get; set; }
             public string Apellidos { get; set; }
+            public DateTime fechaN { get; set; }
         }
         public class EJmapper
         {
@@ -32,9 +34,11 @@ namespace Mapper
                 source.id = 1;
                 source.Nombre = "Roger";
                 source.Apellidos = "Calatayud";
+                source.edad = 23;
                 var destino = iMapper.Map<forma1, forma2>(source);
+                
                 Console.WriteLine(destino.GetType());
-                Console.WriteLine("Nombre de autor" + destino.Nombre + " " + destino.Apellidos);
+                Console.WriteLine("Nombre de autor" + destino.Nombre + " " + destino.Apellidos + " " + destino.fechaN);
                 Console.ReadLine();
 
             }
