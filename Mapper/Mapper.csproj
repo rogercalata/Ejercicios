@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{E89691E1-9FDB-4F58-A1AC-17D38F4A8610}</ProjectGuid>
+    <ProjectGuid>{C898430A-FB01-46F2-A7B0-3DD00658348C}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Ejercicios</RootNamespace>
-    <AssemblyName>Ejercicios</AssemblyName>
+    <RootNamespace>Mapper</RootNamespace>
+    <AssemblyName>Mapper</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -49,7 +49,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Alumno.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
