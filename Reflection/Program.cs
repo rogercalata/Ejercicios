@@ -4,33 +4,36 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using static Reflection.Program;
+using System.Xml;
 
 namespace Reflection
 {
     public class Program
     {
-        static void Main(string [] arg)
+        static void Main(string[] arg)
         {
+
+
+
+
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("ReflectionConfiguration.xml");
+
+            XmlNodeList nodelist = doc.GetElementsByTagName("Type"); // get all <Type> nodes
+            string ListElmAlum = nodelist[0].InnerText;
             Assembly myAssembly = typeof(Program).Assembly;
-            Type alumnoType = myAssembly.GetType("Reflection.Alumno");
-            object alumno = Activator.CreateInstance(alumnoType, 1, "Roger", "Calatayud", "343435367x");
-            Console.WriteLine(((Alumno)alumno).Nombre);
 
-            ///((Alumno)alumno).Nombre
-            ///
-           /// Alumno miAlumno = (Alumno)alumno;
-            ///miAlumno.Nombre = "Roger";
+                Type alumnoType = myAssembly.GetType("Reflection.Alumno");
+                object alumno = Activator.CreateInstance(alumnoType, 1, "Roger", "Calatayud", "343435367x");
 
-            Console.WriteLine(((Alumno)alumno).Nombre);
+                Alumno miAlumno = (Alumno)alumno;
 
-            Alumno miAlumno = (Alumno)alumno;
-            Console.WriteLine(miAlumno.Nombre);
+                Console.WriteLine(miAlumno.Nombre);
 
-            Console.ReadKey();
+                Console.ReadKey();
+            }
         }
-
     }
-}
 
 
