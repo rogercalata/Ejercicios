@@ -15,13 +15,6 @@ namespace Reflection
 
 
 
-
-
-            XmlDocument doc = new XmlDocument();
-            doc.Load("ReflectionConfiguration.xml");
-
-            XmlNodeList nodelist = doc.GetElementsByTagName("Type"); // get all <Type> nodes
-            string ListElmAlum = nodelist[0].InnerText;
             Assembly myAssembly = typeof(Program).Assembly;
 
                 Type alumnoType = myAssembly.GetType("Reflection.Alumno");
@@ -32,7 +25,19 @@ namespace Reflection
                 Console.WriteLine(miAlumno.Nombre);
 
                 Console.ReadKey();
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("ReflectionConfiguration.xml");
+            //Aplicando XPATH a el documento creado.....
+            XmlNodeList xnodes = doc.SelectNodes("Types / Type ");
+            //Impimiendo los resultados obtenidos
+            Console.WriteLine();
+            for (int i = 0; i < xnodes.Count; i++)
+            {
+                Console.WriteLine(xnodes[i].InnerText);
             }
+            Console.ReadKey();
+        }
         }
     }
 
