@@ -5,15 +5,15 @@ using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using System.Xml.XPath;
 
 namespace Reflection
 {
     public class Program
     {
+
         static void Main(string[] arg)
         {
-
-
 
             Assembly myAssembly = typeof(Program).Assembly;
 
@@ -26,6 +26,8 @@ namespace Reflection
 
                 Console.ReadKey();
 
+            
+
             XmlDocument doc = new XmlDocument();
             doc.Load("ReflectionConfiguration.xml");
             //Aplicando XPATH a el documento creado.....
@@ -37,6 +39,27 @@ namespace Reflection
                 Console.WriteLine(xnodes[i].InnerText);
             }
             Console.ReadKey();
+            
+            
+            /*XPathNavigator nav;
+            XPathDocument docNav;
+            XPathNodeIterator NodeIter;
+            String strExpression;
+
+            // Open the XML.
+            docNav = new XPathDocument(@"ReflectionConfiguration.xml");
+            // Create a navigator to query with XPath.
+            nav = docNav.CreateNavigator();
+            strExpression = "Types / Type[Reflection.Alumno]";
+            // Select the node and place the results in an iterator.
+            NodeIter = nav.Select(strExpression);
+            Console.WriteLine("Lista de alumnos:");
+            //Iterate through the results showing the element value.
+            while (NodeIter.MoveNext())
+            {
+                Console.WriteLine("alumno: {0}", NodeIter.Current.Value);
+            };
+            Console.ReadKey();*/
         }
         }
     }
