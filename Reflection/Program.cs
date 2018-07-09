@@ -19,17 +19,25 @@ namespace Reflection
 
                 Type alumnoType = myAssembly.GetType("Reflection.Alumno");
                 object alumno = Activator.CreateInstance(alumnoType, 1, "Roger", "Calatayud", "343435367x");
-
                 Alumno miAlumno = (Alumno)alumno;
-
                 Console.WriteLine(miAlumno.Nombre);
-
                 Console.ReadKey();
-
-            
 
             XmlDocument doc = new XmlDocument();
             doc.Load("ReflectionConfiguration.xml");
+            XmlNodeList elemlist = doc.GetElementsByTagName("Type");
+            string ns = elemlist[0].InnerText;
+
+            XPathDocument doc_xml = new XPathDocument("ReflectionConfiguration.xml");
+            XPathNavigator nav = doc_xml.CreateNavigator();
+            XPathNavigator texto_nodos = nav.SelectSingleNode("/Types/Type[@id='Alumno']");
+            Assembly myassembly = typeof(Alumno).Assembly;
+            Type constructor = myassembly.GetType(texto_nodos.ToString());
+            Alumno instance = Activator.CreateInstance<Alumno>();
+            object alumno = Activator.CreateInstance(constructor, instance.IdAlumno, instance.Nombre, instance.Apellido, instance.Dni);
+            var objetoAlumno = ((Alumno)alumno);
+            return objetoAlumno;
+            /*
             //Aplicando XPATH a el documento creado.....
             XmlNodeList xnodes = doc.SelectNodes("Types / Type ");
             //Impimiendo los resultados obtenidos
@@ -39,9 +47,8 @@ namespace Reflection
                 Console.WriteLine(xnodes[i].InnerText);
             }
             Console.ReadKey();
-            
-            
-            /*XPathNavigator nav;
+            //
+            XPathNavigator nav;
             XPathDocument docNav;
             XPathNodeIterator NodeIter;
             String strExpression;
@@ -61,7 +68,7 @@ namespace Reflection
             };
             Console.ReadKey();*/
         }
-        }
+    }
     }
 
 

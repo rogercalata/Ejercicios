@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
     <Types>
-       <Type id="alumno">Reflection.alumno</Type>
+       <Type id="Alumno">Reflection.alumno</Type>
       <Type id="alumno1">miAlumno.Nombre</Type>
       <noleer>Si esto va no deberia ser leido este nodo</noleer>
     </Types>
